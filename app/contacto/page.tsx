@@ -168,7 +168,7 @@ export default function ContactoPage() {
             transition={{ duration: 0.8 }}
             className="mb-12"
           >
-            <h1 className="text-8xl lg:text-9xl xl:text-[12rem] font-overwave text-cafe mb-8 tracking-widest">
+            <h1 className="lg:text-9xl xl:text-[12rem] font-overwave text-cafe mb-8 tracking-widest text-6xl">
               APROSEX
             </h1>
           </motion.div>
@@ -198,7 +198,7 @@ export default function ContactoPage() {
       <section className="py-16 lg:py-24 bg-melon">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <h2 className="text-6xl font-raleway-bold text-rojo-persa mb-8 lg:text-6xl tracking-normal">Contacto</h2>
+            <h2 className="font-raleway-bold text-rojo-persa mb-8 lg:text-6xl tracking-normal text-5xl">Contacto</h2>
             <p className="text-2xl lg:text-3xl font-raleway-light text-cafe leading-relaxed">Escribe a Aprosex</p>
           </motion.div>
         </div>
@@ -254,7 +254,7 @@ export default function ContactoPage() {
                       required
                       value={formData.subject}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
+                      className="w-full px-4 py-3 bg-white text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular tracking-tighter"
                       placeholder="¿En qué podemos ayudarte?"
                     />
                   </div>
