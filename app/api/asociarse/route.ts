@@ -1,8 +1,4 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { Resend } from "resend"
-import { getAssociationEmailTemplate, getAssociationConfirmationTemplate } from "@/lib/email-templates"
-
-const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(request: NextRequest) {
   try {
@@ -47,45 +43,19 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "La edad debe ser un número entre 18 y 100" }, { status: 400 })
     }
 
-    // Preparar datos para el template
-    const emailData = {
-      nombre: data.nombre,
-      apellidos: data.apellidos,
-      email: data.email,
-      telefono: data.telefono,
-      fechaNacimiento: `${data.edad} años`,
-      direccion: `${data.ciudad}, ${data.provincia}`,
-      codigoPostal: data.codigoPostal,
-      ciudad: data.ciudad,
-      provincia: data.provincia,
-      pais: "España",
-      profesion: data.situacionLaboral,
-      experiencia: data.experiencia,
-      motivacion: data.motivacion,
-      contribucion: data.aportacion,
-      habilidades: data.habilidades,
-      disponibilidad: data.disponibilidad,
-      referencias: data.referencias,
-      comentarios: data.expectativas,
-    }
+    // Log de la solicitud (para debugging)
+    console.log("📝 Nueva solicitud de asociación recibida:")
+    console.log("👤 Nombre:", data.nombre, data.apellidos)
+    console.log("📧 Email:", data.email)
+    console.log("📱 Teléfono:", data.telefono)
+    console.log("🎂 Edad:", data.edad)
+    console.log("📍 Ubicación:", data.ciudad, data.provincia)
+    console.log("💼 Situación laboral:", data.situacionLaboral)
+    console.log("⏰ Disponibilidad:", data.disponibilidad)
+    console.log("🛠️ Habilidades:", data.habilidades)
+    console.log("💭 Motivación:", data.motivacion.substring(0, 100) + "...")
 
-    // Enviar email a APROSEX
-    await resend.emails.send({
-      from: "noreply@aprosex.org",
-      to: "info@aprosex.org",
-      subject: `Nueva solicitud de asociación - ${data.nombre} ${data.apellidos}`,
-      html: getAssociationEmailTemplate(emailData),
-    })
-
-    // Enviar email de confirmación al usuario
-    await resend.emails.send({
-      from: "noreply@aprosex.org",
-      to: data.email,
-      subject: "Confirmación de solicitud de asociación - APROSEX",
-      html: getAssociationConfirmationTemplate(data.nombre),
-    })
-
-    console.log("✅ Solicitud de asociación procesada y emails enviados")
+    console.log("✅ Solicitud procesada correctamente")
 
     return NextResponse.json({
       success: true,
@@ -93,6 +63,6 @@ export async function POST(request: NextRequest) {
     })
   } catch (error) {
     console.error("❌ Error procesando solicitud de asociación:", error)
-    return NextResponse.json({ error: "Error enviando la solicitud. Por favor, inténtalo de nuevo." }, { status: 500 })
+    return NextResponse.json({ error: "Error interno del servidor" }, { status: 500 })
   }
 }
