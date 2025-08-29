@@ -163,7 +163,7 @@ export default function AprosexWebsite() {
             transition={{ duration: 0.8 }}
             className="mb-12"
           >
-            <h1 className="text-8xl lg:text-9xl xl:text-[12rem] font-overwave text-cafe mb-8 tracking-widest">
+            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[12rem] font-overwave text-cafe mb-8 tracking-widest">
               APROSEX
             </h1>
           </motion.div>
