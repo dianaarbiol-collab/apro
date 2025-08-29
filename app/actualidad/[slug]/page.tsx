@@ -4,7 +4,7 @@ import type React from "react"
 import { useState, useEffect } from "react"
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
-import { Menu, X, ArrowLeft, Calendar, User, Facebook, Twitter, Instagram } from "lucide-react"
+import { Menu, X, ArrowLeft, Calendar, User, Twitter } from "lucide-react"
 import { getBlogPost } from "@/lib/blog-posts"
 import { notFound } from "next/navigation"
 
@@ -323,13 +323,16 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   <Twitter size={20} />
                 </motion.a>
                 <motion.a
-                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`}
+                  href="https://aprosex.bsky.social"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
                   className="bg-rojo-persa text-beige p-3 hover:bg-cafe transition-colors duration-300"
                 >
-                  <Facebook size={20} />
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
+                    <path d="M7.5 8.5c1.5-1.5 3-2 4.5-2s3 .5 4.5 2c.5.5.5 1.5 0 2-.5.5-1.5.5-2 0-.5-.5-1-.5-1.5-.5s-1 0-1.5.5c-.5.5-1.5.5-2 0-.5-.5-.5-1.5 0-2z" />
+                  </svg>
                 </motion.a>
               </div>
             </div>
@@ -353,9 +356,11 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   <span className="sr-only">Twitter</span>
                   <Twitter size={24} />
                 </a>
-                <a href="https://www.instagram.com/aprosex" className="text-beige hover:text-melon transition-colors">
-                  <span className="sr-only">Instagram</span>
-                  <Instagram size={24} />
+                <a href="https://aprosex.bsky.social" className="text-beige hover:text-melon transition-colors">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944.444 1.85.444 5.55c0 .995.78 9.588 1.875 10.812 1.072 1.2 2.944 1.029 5.178.853 2.329-.183 3.14-1.027 3.14-1.027s-.811.844-3.14 1.027c-2.234.176-4.106.347-5.178-.853C1.224 15.138.444 6.545.444 5.55c0-3.7 2.122-4.606 4.758-2.745C7.954 4.747 10.913 8.686 12 10.8z" />
+                    <path d="M12 10.8c1.087-2.114 4.046-6.053 6.798-7.995C21.434.944 23.556 1.85 23.556 5.55c0 .995-.78 9.588-1.875 10.812-1.072 1.2-2.944 1.029-5.178.853-2.329-.183 3.14-1.027 3.14-1.027s.811.844 3.14 1.027c2.234.176 4.106.347 5.178-.853 1.095-1.224 1.875-9.817 1.875-10.812 0-3.7-2.122-4.606-4.758-2.745C16.046 4.747 13.087 8.686 12 10.8z" />
+                  </svg>
                 </a>
               </div>
             </div>

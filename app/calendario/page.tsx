@@ -1,10 +1,10 @@
 "use client"
 
 import type React from "react"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
-import { Menu, X, Mail, MapPin, Twitter, Instagram, Calendar, Clock, LocateIcon as Location } from "lucide-react"
+import { Menu, X, Calendar, Clock, MapPin, Mail, Twitter, Instagram } from "lucide-react"
 
 // Animation variants
 const fadeInUp = {
@@ -33,26 +33,6 @@ function AnimatedSection({ children, className = "" }: { children: React.ReactNo
 export default function CalendarioPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  // Rotating text for hero section
-  const rotatingTexts = ["una organización de activismo", "un espacio cultural", "un centro de aprendizaje", "un hogar"]
-  const [currentTextIndex, setCurrentTextIndex] = useState(0)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTextIndex((prev) => (prev + 1) % rotatingTexts.length)
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [])
-
-  // Close menu when clicking outside
-  useEffect(() => {
-    const handleClickOutside = () => {
-      if (isMenuOpen) setIsMenuOpen(false)
-    }
-    document.addEventListener("click", handleClickOutside)
-    return () => document.removeEventListener("click", handleClickOutside)
-  }, [isMenuOpen])
-
   const navigation = [
     { name: "Inicio", href: "/" },
     { name: "Aprosex", href: "/aprosex" },
@@ -60,123 +40,6 @@ export default function CalendarioPage() {
     { name: "Actualidad Puta", href: "/actualidad" },
     { name: "Calendario", href: "/calendario" },
     { name: "Contacto", href: "/contacto" },
-  ]
-
-  const upcomingEvents = [
-    {
-      id: "potencias-transfeministas",
-      title: "Potencias transfeministas en tiempos reaccionarios",
-      date: "30 de Agosto, 2025",
-      time: "17:00-18:30",
-      location: "Universidad de Verano Anticapitalista",
-      description:
-        "De sus pánicos morales a nuestras luchas radicales. Con Anneke Necro, Carolina Meloni e Ira Hybris.",
-      type: "Charla",
-      registrationUrl: "https://inscripcion.unianticapi.info:8181/univerano2025/",
-    },
-    {
-      id: "putas-imagenes-charla",
-      title: "Putas Imágenes",
-      date: "30 de Agosto, 2025",
-      time: "11:30-13:30",
-      location: "Universidad de Verano Anticapitalista",
-      description: "Perspectivas materialistas de la pornografía ante las urgencias del presente. Con Andrea Corrales.",
-      type: "Charla",
-      registrationUrl: "https://inscripcion.unianticapi.info:8181/univerano2025/",
-    },
-  ]
-
-  const pastEvents = [
-    {
-      id: "presentacion-fanzine-santander",
-      title: "Presentación fanzine Trabajo sexual y Colonialismo",
-      date: "12 de Agosto, 2025",
-      time: "19:00",
-      location: "Librería la Libre, Santander",
-      description: "Presentación del fanzine sobre trabajo sexual y colonialismo.",
-      type: "Presentación",
-    },
-    {
-      id: "internacional-queer-macba",
-      title: "La internacional queer Performance",
-      date: "20 de Junio, 2025",
-      time: "18:00",
-      location: "MACBA",
-      description: "Performance queer internacional en el Museo de Arte Contemporáneo de Barcelona.",
-      type: "Performance",
-    },
-    {
-      id: "feria-libro-madrid",
-      title: "Feria del libro de Madrid",
-      date: "14 de Junio, 2025",
-      time: "Todo el día",
-      location: "Madrid",
-      description: "Firma de libros, Deseo Disidente de Anneke Necro en la Feria del Libro.",
-      type: "Firma",
-    },
-    {
-      id: "espacio-cuidados",
-      title: "Espacio de cuidados",
-      date: "1 de Junio, 2025",
-      time: "Cerrado",
-      location: "Ateneu del Raval",
-      description: "Domingo de espacio de cuidados para la comunidad (evento cerrado).",
-      type: "Cuidados",
-    },
-    {
-      id: "museo-puta-inauguracion",
-      title: "Museo Puta - Inauguración",
-      date: "31 de Mayo, 2025",
-      time: "18:30",
-      location: "La Escocesa",
-      description: "Inauguración del Museo Puta, espacio de reivindicación cultural.",
-      type: "Inauguración",
-    },
-    {
-      id: "sant-jordi-putas-imagenes",
-      title: "Sant Jordi - Presentación Putas Imágenes",
-      date: "24 de Abril, 2025",
-      time: "17:00",
-      location: "Ateneu del Raval",
-      description: "Presentación del libro Putas Imágenes de Andrea Corrales por Aprosex.",
-      type: "Presentación",
-    },
-    {
-      id: "firmas-sant-jordi",
-      title: "Firmas Sant Jordi - Deseo Disidente",
-      date: "23 de Abril, 2025",
-      time: "Todo el día",
-      location: "Ciutat Invisible",
-      description: "Firmas del libro Deseo Disidente, las políticas del placer de Anneke Necro.",
-      type: "Firma",
-    },
-    {
-      id: "formacion-antirracista",
-      title: "Formación antirracista para Muestra Fervor",
-      date: "3 de Abril, 2025",
-      time: "Por confirmar",
-      location: "Ateneu del Raval",
-      description: "Taller de formación antirracista en el marco de la Muestra Fervor.",
-      type: "Formación",
-    },
-    {
-      id: "la-llorona-reina-sofia",
-      title: "La Llorona",
-      date: "8 de Febrero, 2025",
-      time: "17:00",
-      location: "Museo Reina Sofía",
-      description: "Presentación de la obra teatral La Llorona en el Museo Reina Sofía.",
-      type: "Teatro",
-    },
-    {
-      id: "presentacion-deseo-disidente",
-      title: "Presentación de libro Deseo Disidente",
-      date: "6 de Febrero, 2025",
-      time: "18:00",
-      location: "Ateneu la Maliciosa",
-      description: "Presentación del libro sobre deseo disidente y políticas del placer.",
-      type: "Presentación",
-    },
   ]
 
   return (
@@ -215,10 +78,7 @@ export default function CalendarioPage() {
 
             {/* Mobile menu button */}
             <button
-              onClick={(e) => {
-                e.stopPropagation()
-                setIsMenuOpen(!isMenuOpen)
-              }}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="lg:hidden p-2 rounded-md text-cafe hover:text-rojo-persa transition-colors"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -226,19 +86,13 @@ export default function CalendarioPage() {
           </div>
 
           {/* Mobile Navigation */}
-          <motion.div
-            initial={false}
-            animate={{ height: isMenuOpen ? "auto" : 0, opacity: isMenuOpen ? 1 : 0 }}
-            transition={{ duration: 0.3 }}
-            className="lg:hidden overflow-hidden"
-          >
+          <div className={`lg:hidden overflow-hidden ${isMenuOpen ? "h-auto opacity-100" : "h-0 opacity-0"}`}>
             <div className="py-4 space-y-4">
               {navigation.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
                   className="block text-cafe hover:text-rojo-persa font-raleway-medium transition-colors duration-300"
-                  onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </a>
@@ -252,7 +106,7 @@ export default function CalendarioPage() {
                 </a>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </header>
 
@@ -276,17 +130,7 @@ export default function CalendarioPage() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-2xl lg:text-4xl font-raleway-light text-cafe leading-relaxed"
           >
-            es{" "}
-            <motion.span
-              key={currentTextIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="text-rojo-persa font-raleway-semibold inline-block"
-            >
-              {rotatingTexts[currentTextIndex]}
-            </motion.span>
+            es <span className="text-rojo-persa font-raleway-semibold inline-block">una organización de activismo</span>
           </motion.div>
         </div>
       </section>
@@ -303,7 +147,7 @@ export default function CalendarioPage() {
         </div>
       </section>
 
-      {/* Upcoming Events */}
+      {/* Próximos Eventos Section */}
       <section className="py-16 lg:py-24 bg-[rgba(232,179,166,0.7)]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
@@ -313,50 +157,84 @@ export default function CalendarioPage() {
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {upcomingEvents.map((event, index) => (
-              <AnimatedSection key={index}>
-                <div className="bg-beige p-6 shadow-lg h-full flex flex-col">
-                  <div className="flex items-center mb-4">
-                    <span className="bg-rojo-persa text-beige px-3 py-1 text-sm font-raleway-semibold rounded-full">
-                      {event.type}
-                    </span>
-                  </div>
-                  <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-4">{event.title}</h4>
-
-                  <div className="space-y-2 mb-4 text-cafe font-raleway-regular">
-                    <div className="flex items-center space-x-2">
-                      <Calendar size={16} />
-                      <span>{event.date}</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Clock size={16} />
-                      <span>{event.time}</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Location size={16} />
-                      <span>{event.location}</span>
-                    </div>
-                  </div>
-
-                  <p className="text-cafe font-raleway-regular mb-6 flex-grow">{event.description}</p>
-
-                  <motion.a
-                    href={event.registrationUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    className="btn-primary px-6 py-2 rounded-full font-raleway-semibold text-center inline-block"
-                  >
-                    Inscribirse
-                  </motion.a>
+            <AnimatedSection>
+              <div className="bg-beige p-6 shadow-lg h-full flex flex-col">
+                <div className="flex items-center mb-4">
+                  <span className="bg-rojo-persa text-beige px-3 py-1 text-sm font-raleway-semibold rounded-full">
+                    Charla
+                  </span>
                 </div>
-              </AnimatedSection>
-            ))}
+                <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-4">
+                  Potencias transfeministas en tiempos reaccionarios
+                </h4>
+                <div className="space-y-2 mb-4 text-cafe font-raleway-regular">
+                  <div className="flex items-center space-x-2">
+                    <Calendar size={16} />
+                    <span>30 de Agosto, 2025</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Clock size={16} />
+                    <span>17:00-18:30</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <MapPin size={16} />
+                    <span>Universidad de Verano Anticapitalista</span>
+                  </div>
+                </div>
+                <p className="text-cafe font-raleway-regular mb-6 flex-grow">
+                  De sus pánicos morales a nuestras luchas radicales. Con Anneke Necro, Carolina Meloni e Ira Hybris.
+                </p>
+                <a
+                  href="https://inscripcion.unianticapi.info:8181/univerano2025/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary px-6 py-2 rounded-full font-raleway-semibold text-center inline-block"
+                >
+                  Inscribirse
+                </a>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection>
+              <div className="bg-beige p-6 shadow-lg h-full flex flex-col">
+                <div className="flex items-center mb-4">
+                  <span className="bg-rojo-persa text-beige px-3 py-1 text-sm font-raleway-semibold rounded-full">
+                    Charla
+                  </span>
+                </div>
+                <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-4">Putas Imágenes</h4>
+                <div className="space-y-2 mb-4 text-cafe font-raleway-regular">
+                  <div className="flex items-center space-x-2">
+                    <Calendar size={16} />
+                    <span>30 de Agosto, 2025</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Clock size={16} />
+                    <span>11:30-13:30</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <MapPin size={16} />
+                    <span>Universidad de Verano Anticapitalista</span>
+                  </div>
+                </div>
+                <p className="text-cafe font-raleway-regular mb-6 flex-grow">
+                  Perspectivas materialistas de la pornografía ante las urgencias del presente. Con Andrea Corrales.
+                </p>
+                <a
+                  href="https://inscripcion.unianticapi.info:8181/univerano2025/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary px-6 py-2 rounded-full font-raleway-semibold text-center inline-block"
+                >
+                  Inscribirse
+                </a>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
-      {/* Past Events */}
+      {/* Eventos Pasados Section */}
       <section className="py-16 lg:py-24 bg-[#E8DDD4]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
@@ -366,31 +244,257 @@ export default function CalendarioPage() {
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {pastEvents.map((event, index) => (
-              <AnimatedSection key={index}>
-                <div className="bg-beige p-6 shadow-lg">
-                  <div className="flex items-center mb-4">
-                    <span className="bg-gray-500 text-beige px-3 py-1 text-sm font-raleway-semibold rounded-full">
-                      {event.type}
-                    </span>
-                  </div>
-                  <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-4">{event.title}</h4>
-
-                  <div className="space-y-2 mb-4 text-cafe font-raleway-regular">
-                    <div className="flex items-center space-x-2">
-                      <Calendar size={16} />
-                      <span>{event.date}</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Location size={16} />
-                      <span>{event.location}</span>
-                    </div>
-                  </div>
-
-                  <p className="text-cafe font-raleway-regular">{event.description}</p>
+            <AnimatedSection>
+              <div className="bg-beige p-6 shadow-lg">
+                <div className="flex items-center mb-4">
+                  <span className="bg-gray-500 text-beige px-3 py-1 text-sm font-raleway-semibold rounded-full">
+                    Presentación
+                  </span>
                 </div>
-              </AnimatedSection>
-            ))}
+                <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-4">
+                  Presentación fanzine Trabajo sexual y Colonialismo
+                </h4>
+                <div className="space-y-2 mb-4 text-cafe font-raleway-regular">
+                  <div className="flex items-center space-x-2">
+                    <Calendar size={16} />
+                    <span>12 de Agosto, 2025</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <MapPin size={16} />
+                    <span>Librería la Libre, Santander</span>
+                  </div>
+                </div>
+                <p className="text-cafe font-raleway-regular">
+                  Presentación del fanzine sobre trabajo sexual y colonialismo.
+                </p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection>
+              <div className="bg-beige p-6 shadow-lg">
+                <div className="flex items-center mb-4">
+                  <span className="bg-gray-500 text-beige px-3 py-1 text-sm font-raleway-semibold rounded-full">
+                    Performance
+                  </span>
+                </div>
+                <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-4">
+                  La internacional queer Performance
+                </h4>
+                <div className="space-y-2 mb-4 text-cafe font-raleway-regular">
+                  <div className="flex items-center space-x-2">
+                    <Calendar size={16} />
+                    <span>20 de Junio, 2025</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <MapPin size={16} />
+                    <span>MACBA</span>
+                  </div>
+                </div>
+                <p className="text-cafe font-raleway-regular">
+                  Performance queer internacional en el Museo de Arte Contemporáneo de Barcelona.
+                </p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection>
+              <div className="bg-beige p-6 shadow-lg">
+                <div className="flex items-center mb-4">
+                  <span className="bg-gray-500 text-beige px-3 py-1 text-sm font-raleway-semibold rounded-full">
+                    Firma
+                  </span>
+                </div>
+                <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-4">Feria del libro de Madrid</h4>
+                <div className="space-y-2 mb-4 text-cafe font-raleway-regular">
+                  <div className="flex items-center space-x-2">
+                    <Calendar size={16} />
+                    <span>14 de Junio, 2025</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <MapPin size={16} />
+                    <span>Madrid</span>
+                  </div>
+                </div>
+                <p className="text-cafe font-raleway-regular">
+                  Firma de libros, Deseo Disidente de Anneke Necro en la Feria del Libro.
+                </p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection>
+              <div className="bg-beige p-6 shadow-lg">
+                <div className="flex items-center mb-4">
+                  <span className="bg-gray-500 text-beige px-3 py-1 text-sm font-raleway-semibold rounded-full">
+                    Cuidados
+                  </span>
+                </div>
+                <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-4">Espacio de cuidados</h4>
+                <div className="space-y-2 mb-4 text-cafe font-raleway-regular">
+                  <div className="flex items-center space-x-2">
+                    <Calendar size={16} />
+                    <span>1 de Junio, 2025</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <MapPin size={16} />
+                    <span>Ateneu del Raval</span>
+                  </div>
+                </div>
+                <p className="text-cafe font-raleway-regular">
+                  Domingo de espacio de cuidados para la comunidad (evento cerrado).
+                </p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection>
+              <div className="bg-beige p-6 shadow-lg">
+                <div className="flex items-center mb-4">
+                  <span className="bg-gray-500 text-beige px-3 py-1 text-sm font-raleway-semibold rounded-full">
+                    Inauguración
+                  </span>
+                </div>
+                <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-4">Museo Puta - Inauguración</h4>
+                <div className="space-y-2 mb-4 text-cafe font-raleway-regular">
+                  <div className="flex items-center space-x-2">
+                    <Calendar size={16} />
+                    <span>31 de Mayo, 2025</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <MapPin size={16} />
+                    <span>La Escocesa</span>
+                  </div>
+                </div>
+                <p className="text-cafe font-raleway-regular">
+                  Inauguración del Museo Puta, espacio de reivindicación cultural.
+                </p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection>
+              <div className="bg-beige p-6 shadow-lg">
+                <div className="flex items-center mb-4">
+                  <span className="bg-gray-500 text-beige px-3 py-1 text-sm font-raleway-semibold rounded-full">
+                    Presentación
+                  </span>
+                </div>
+                <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-4">
+                  Sant Jordi - Presentación Putas Imágenes
+                </h4>
+                <div className="space-y-2 mb-4 text-cafe font-raleway-regular">
+                  <div className="flex items-center space-x-2">
+                    <Calendar size={16} />
+                    <span>24 de Abril, 2025</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <MapPin size={16} />
+                    <span>Ateneu del Raval</span>
+                  </div>
+                </div>
+                <p className="text-cafe font-raleway-regular">
+                  Presentación del libro Putas Imágenes de Andrea Corrales por Aprosex.
+                </p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection>
+              <div className="bg-beige p-6 shadow-lg">
+                <div className="flex items-center mb-4">
+                  <span className="bg-gray-500 text-beige px-3 py-1 text-sm font-raleway-semibold rounded-full">
+                    Firma
+                  </span>
+                </div>
+                <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-4">
+                  Firmas Sant Jordi - Deseo Disidente
+                </h4>
+                <div className="space-y-2 mb-4 text-cafe font-raleway-regular">
+                  <div className="flex items-center space-x-2">
+                    <Calendar size={16} />
+                    <span>23 de Abril, 2025</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <MapPin size={16} />
+                    <span>Ciutat Invisible</span>
+                  </div>
+                </div>
+                <p className="text-cafe font-raleway-regular">
+                  Firmas del libro Deseo Disidente, las políticas del placer de Anneke Necro.
+                </p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection>
+              <div className="bg-beige p-6 shadow-lg">
+                <div className="flex items-center mb-4">
+                  <span className="bg-gray-500 text-beige px-3 py-1 text-sm font-raleway-semibold rounded-full">
+                    Formación
+                  </span>
+                </div>
+                <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-4">
+                  Formación antirracista para Muestra Fervor
+                </h4>
+                <div className="space-y-2 mb-4 text-cafe font-raleway-regular">
+                  <div className="flex items-center space-x-2">
+                    <Calendar size={16} />
+                    <span>3 de Abril, 2025</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <MapPin size={16} />
+                    <span>Ateneu del Raval</span>
+                  </div>
+                </div>
+                <p className="text-cafe font-raleway-regular">
+                  Taller de formación antirracista en el marco de la Muestra Fervor.
+                </p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection>
+              <div className="bg-beige p-6 shadow-lg">
+                <div className="flex items-center mb-4">
+                  <span className="bg-gray-500 text-beige px-3 py-1 text-sm font-raleway-semibold rounded-full">
+                    Teatro
+                  </span>
+                </div>
+                <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-4">La Llorona</h4>
+                <div className="space-y-2 mb-4 text-cafe font-raleway-regular">
+                  <div className="flex items-center space-x-2">
+                    <Calendar size={16} />
+                    <span>8 de Febrero, 2025</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <MapPin size={16} />
+                    <span>Museo Reina Sofía</span>
+                  </div>
+                </div>
+                <p className="text-cafe font-raleway-regular">
+                  Presentación de la obra teatral La Llorona en el Museo Reina Sofía.
+                </p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection>
+              <div className="bg-beige p-6 shadow-lg">
+                <div className="flex items-center mb-4">
+                  <span className="bg-gray-500 text-beige px-3 py-1 text-sm font-raleway-semibold rounded-full">
+                    Presentación
+                  </span>
+                </div>
+                <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-4">
+                  Presentación de libro Deseo Disidente
+                </h4>
+                <div className="space-y-2 mb-4 text-cafe font-raleway-regular">
+                  <div className="flex items-center space-x-2">
+                    <Calendar size={16} />
+                    <span>6 de Febrero, 2025</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <MapPin size={16} />
+                    <span>Ateneu la Maliciosa</span>
+                  </div>
+                </div>
+                <p className="text-cafe font-raleway-regular">
+                  Presentación del libro sobre deseo disidente y políticas del placer.
+                </p>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -403,21 +507,18 @@ export default function CalendarioPage() {
             <div>
               <h3 className="text-xl font-raleway-bold text-rojo-persa mb-6">Apoya la lucha por nuestros derechos</h3>
               <div className="space-y-4">
-                <motion.a
+                <a
                   href="/asociarse"
-                  whileHover={{ scale: 1.05 }}
                   className="block btn-primary px-6 py-3 rounded-full font-raleway-semibold text-center"
                 >
                   Asociarse
-                </motion.a>
-                <motion.a
+                </a>
+                <a
                   href="/donar"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
                   className="block btn-secondary px-6 py-3 rounded-full font-raleway-semibold text-center"
                 >
                   Donar
-                </motion.a>
+                </a>
               </div>
             </div>
 
@@ -462,14 +563,9 @@ export default function CalendarioPage() {
                   placeholder="Tu email"
                   className="w-full px-4 py-2 rounded-lg bg-beige text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
                 />
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full btn-primary px-4 py-2 rounded-lg font-raleway-semibold"
-                >
+                <button type="submit" className="w-full btn-primary px-4 py-2 rounded-lg font-raleway-semibold">
                   Suscribirse
-                </motion.button>
+                </button>
               </form>
             </div>
           </div>
@@ -477,20 +573,18 @@ export default function CalendarioPage() {
           {/* Social Links */}
           <div className="border-t border-gray-600 pt-8 mb-8">
             <div className="flex justify-center space-x-6">
-              <motion.a
+              <a
                 href="https://x.com/Aprosex"
-                whileHover={{ scale: 1.2 }}
                 className="text-white hover:text-rojo-persa transition-colors duration-300"
               >
                 <Twitter size={24} />
-              </motion.a>
-              <motion.a
+              </a>
+              <a
                 href="https://www.instagram.com/aprosex"
-                whileHover={{ scale: 1.2 }}
                 className="text-white hover:text-rojo-persa transition-colors duration-300"
               >
                 <Instagram size={24} />
-              </motion.a>
+              </a>
             </div>
           </div>
 

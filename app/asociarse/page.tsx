@@ -1,68 +1,9 @@
 "use client"
-
-import type React from "react"
-import { useState, useEffect } from "react"
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+import { useState } from "react"
 import { Menu, X, Mail, MapPin, Twitter, Instagram } from "lucide-react"
-import { useRouter } from "next/navigation"
-
-// Animation variants
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-}
-
-// Animated section component
-function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
-
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={fadeInUp}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
-}
 
 export default function AsociarsePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [currentTextIndex, setCurrentTextIndex] = useState(0)
-  const router = useRouter()
-
-  const [formData, setFormData] = useState({
-    nombre: "",
-    email: "",
-    telefono: "",
-    ciudad: "",
-    edad: "",
-    experiencia: "",
-    motivacion: "",
-    contribucion: "",
-    privacidad: false,
-    newsletter: false,
-    whatsapp: false,
-  })
-
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
-  const [errorMessage, setErrorMessage] = useState("")
-
-  const rotatingTexts = ["una organización de activismo", "un espacio cultural", "un centro de aprendizaje", "un hogar"]
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentTextIndex((prevIndex) => (prevIndex + 1) % rotatingTexts.length)
-    }, 3000)
-
-    return () => clearInterval(intervalId)
-  }, [])
 
   const navigation = [
     { name: "Inicio", href: "/" },
@@ -72,49 +13,6 @@ export default function AsociarsePage() {
     { name: "Calendario", href: "/calendario" },
     { name: "Contacto", href: "/contacto" },
   ]
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
-    }))
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitStatus("idle")
-    setErrorMessage("")
-
-    try {
-      const response = await fetch("/api/asociarse", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
-
-      const data = await response.json()
-
-      if (response.ok) {
-        setSubmitStatus("success")
-        // Redirect to success page after a short delay
-        setTimeout(() => {
-          router.push("/asociarse/exito")
-        }, 1500)
-      } else {
-        setSubmitStatus("error")
-        setErrorMessage(data.error || "Error al enviar la solicitud")
-      }
-    } catch (error) {
-      setSubmitStatus("error")
-      setErrorMessage("Error de conexión. Por favor, inténtalo de nuevo.")
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
 
   return (
     <div className="min-h-screen bg-tea-rose text-cafe">
@@ -134,8 +32,8 @@ export default function AsociarsePage() {
               {navigation.map((item) => (
                 <a
                   key={item.name}
-                  href={item.href}
                   className="text-cafe hover:text-rojo-persa font-raleway-medium transition-colors duration-300"
+                  href={item.href}
                 >
                   {item.name}
                 </a>
@@ -144,10 +42,10 @@ export default function AsociarsePage() {
 
             {/* CTA Buttons - Desktop */}
             <div className="hidden lg:flex space-x-4">
-              <a href="/asociarse" className="btn-primary px-6 py-2 font-raleway-semibold">
+              <a className="btn-primary px-6 py-2 font-raleway-semibold" href="/asociarse">
                 Asociarse
               </a>
-              <a href="/donar" className="btn-secondary px-6 py-2 font-raleway-semibold">
+              <a className="btn-secondary px-6 py-2 font-raleway-semibold" href="/donar">
                 Donar
               </a>
             </div>
@@ -163,17 +61,35 @@ export default function AsociarsePage() {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="lg:hidden py-4 space-y-4">
-              {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="block text-cafe hover:text-rojo-persa font-raleway-medium transition-colors duration-300"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
-              ))}
+            <div className="lg:hidden">
+              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-melon">
+                {navigation.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="block px-3 py-2 text-cafe hover:text-rojo-persa font-raleway-medium"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                ))}
+                <div className="pt-4 space-y-2">
+                  <a
+                    href="/asociarse"
+                    className="block btn-primary px-6 py-2 font-raleway-semibold text-center"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Asociarse
+                  </a>
+                  <a
+                    href="/donar"
+                    className="block btn-secondary px-6 py-2 font-raleway-semibold text-center"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Donar
+                  </a>
+                </div>
+              </div>
             </div>
           )}
         </div>
@@ -182,59 +98,36 @@ export default function AsociarsePage() {
       {/* Hero Section */}
       <section id="inicio" className="py-16 lg:py-24 bg-[rgba(215,189,172,1)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-12"
-          >
+          <div className="mb-12">
             <h1 className="text-8xl lg:text-9xl xl:text-[12rem] font-overwave text-cafe mb-8 tracking-widest">
               APROSEX
             </h1>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-2xl lg:text-4xl font-raleway-light text-cafe leading-relaxed"
-          >
-            es{" "}
-            <motion.span
-              key={currentTextIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="text-rojo-persa font-raleway-semibold inline-block"
-            >
-              {rotatingTexts[currentTextIndex]}
-            </motion.span>
-          </motion.div>
+          </div>
+          <div className="text-2xl lg:text-4xl font-raleway-light text-cafe leading-relaxed">
+            es <span className="text-rojo-persa font-raleway-semibold inline-block">una organización de activismo</span>
+          </div>
         </div>
       </section>
 
       {/* Page Title Section */}
       <section className="py-16 lg:py-24 bg-[rgba(239,205,206,1)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+          <div>
             <h2 className="text-6xl font-raleway-bold text-rojo-persa mb-8 lg:text-6xl tracking-normal">Asóciate</h2>
             <p className="text-2xl lg:text-3xl font-raleway-light text-cafe leading-relaxed">
               Únete a nuestra lucha por los derechos
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Membership Form */}
+      {/* Form Section */}
       <section className="py-16 lg:py-24 bg-melon">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
+          <div>
             <div className="bg-beige p-8 lg:p-12">
               <h3 className="text-3xl font-raleway-bold text-rojo-persa mb-8 text-center">Formulario de Asociación</h3>
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Personal Information */}
+              <form className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="nombre" className="block text-sm font-raleway-semibold text-cafe mb-2">
@@ -245,8 +138,6 @@ export default function AsociarsePage() {
                       id="nombre"
                       name="nombre"
                       required
-                      value={formData.nombre}
-                      onChange={handleInputChange}
                       className="w-full px-4 py-3 bg-white text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
                       placeholder="Tu nombre completo"
                     />
@@ -260,8 +151,6 @@ export default function AsociarsePage() {
                       id="email"
                       name="email"
                       required
-                      value={formData.email}
-                      onChange={handleInputChange}
                       className="w-full px-4 py-3 bg-white text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
                       placeholder="tu@email.com"
                     />
@@ -277,8 +166,6 @@ export default function AsociarsePage() {
                       type="tel"
                       id="telefono"
                       name="telefono"
-                      value={formData.telefono}
-                      onChange={handleInputChange}
                       className="w-full px-4 py-3 bg-white text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
                       placeholder="+34 XXX XXX XXX"
                     />
@@ -292,8 +179,6 @@ export default function AsociarsePage() {
                       id="ciudad"
                       name="ciudad"
                       required
-                      value={formData.ciudad}
-                      onChange={handleInputChange}
                       className="w-full px-4 py-3 bg-white text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
                       placeholder="Tu ciudad"
                     />
@@ -311,8 +196,6 @@ export default function AsociarsePage() {
                     required
                     min="18"
                     max="99"
-                    value={formData.edad}
-                    onChange={handleInputChange}
                     className="w-full px-4 py-3 bg-white text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
                     placeholder="Tu edad"
                   />
@@ -325,8 +208,6 @@ export default function AsociarsePage() {
                   <select
                     id="experiencia"
                     name="experiencia"
-                    value={formData.experiencia}
-                    onChange={handleInputChange}
                     className="w-full px-4 py-3 bg-white text-cafe focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
                   >
                     <option value="">Selecciona tu experiencia</option>
@@ -348,8 +229,6 @@ export default function AsociarsePage() {
                     name="motivacion"
                     required
                     rows={4}
-                    value={formData.motivacion}
-                    onChange={handleInputChange}
                     className="w-full px-4 py-3 bg-white text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular resize-none"
                     placeholder="Cuéntanos qué te motiva a unirte a nuestra asociación..."
                   />
@@ -363,14 +242,11 @@ export default function AsociarsePage() {
                     id="contribucion"
                     name="contribucion"
                     rows={4}
-                    value={formData.contribucion}
-                    onChange={handleInputChange}
                     className="w-full px-4 py-3 bg-white text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular resize-none"
                     placeholder="Talleres, arte, activismo, apoyo legal, etc..."
                   />
                 </div>
 
-                {/* Checkboxes */}
                 <div className="space-y-4">
                   <div className="flex items-start">
                     <input
@@ -378,8 +254,6 @@ export default function AsociarsePage() {
                       id="privacidad"
                       name="privacidad"
                       required
-                      checked={formData.privacidad}
-                      onChange={handleInputChange}
                       className="mt-1 mr-3 h-4 w-4 text-rojo-persa focus:ring-rojo-persa"
                     />
                     <label htmlFor="privacidad" className="text-sm font-raleway-regular text-cafe">
@@ -388,28 +262,22 @@ export default function AsociarsePage() {
                       compartidos con terceros. *
                     </label>
                   </div>
-
                   <div className="flex items-start">
                     <input
                       type="checkbox"
                       id="whatsapp"
                       name="whatsapp"
-                      checked={formData.whatsapp}
-                      onChange={handleInputChange}
                       className="mt-1 mr-3 h-4 w-4 text-rojo-persa focus:ring-rojo-persa"
                     />
                     <label htmlFor="whatsapp" className="text-sm font-raleway-regular text-cafe">
                       Quiero recibir información por WhatsApp
                     </label>
                   </div>
-
                   <div className="flex items-start">
                     <input
                       type="checkbox"
                       id="newsletter"
                       name="newsletter"
-                      checked={formData.newsletter}
-                      onChange={handleInputChange}
                       className="mt-1 mr-3 h-4 w-4 text-rojo-persa focus:ring-rojo-persa"
                     />
                     <label htmlFor="newsletter" className="text-sm font-raleway-regular text-cafe">
@@ -419,28 +287,9 @@ export default function AsociarsePage() {
                   </div>
                 </div>
 
-                {/* Status Messages */}
-                {submitStatus === "success" && (
-                  <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
-                    ¡Solicitud enviada correctamente! Redirigiendo...
-                  </div>
-                )}
-
-                {submitStatus === "error" && (
-                  <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">{errorMessage}</div>
-                )}
-
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
-                  whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
-                  whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
-                  className={`w-full px-6 py-4 font-raleway-semibold text-lg ${
-                    isSubmitting ? "bg-gray-400 cursor-not-allowed" : "btn-primary"
-                  }`}
-                >
-                  {isSubmitting ? "Enviando solicitud..." : "Enviar Solicitud de Asociación"}
-                </motion.button>
+                <button type="submit" className="w-full px-6 py-4 font-raleway-semibold text-lg btn-primary">
+                  Enviar Solicitud de Asociación
+                </button>
               </form>
 
               <div className="mt-8 p-6 bg-rojo-persa/10 border-l-4 border-rojo-persa">
@@ -453,7 +302,7 @@ export default function AsociarsePage() {
                 </ul>
               </div>
             </div>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
@@ -465,20 +314,12 @@ export default function AsociarsePage() {
             <div>
               <h3 className="text-xl font-raleway-bold text-rojo-persa mb-6">Apoya la lucha por nuestros derechos</h3>
               <div className="space-y-4">
-                <motion.a
-                  href="/asociarse"
-                  whileHover={{ scale: 1.05 }}
-                  className="block btn-primary px-6 py-3 font-raleway-semibold text-center"
-                >
+                <a href="/asociarse" className="block btn-primary px-6 py-3 font-raleway-semibold text-center">
                   Asociarse
-                </motion.a>
-                <motion.a
-                  href="/donar"
-                  whileHover={{ scale: 1.05 }}
-                  className="block btn-secondary px-6 py-3 font-raleway-semibold text-center"
-                >
+                </a>
+                <a href="/donar" className="block btn-secondary px-6 py-3 font-raleway-semibold text-center">
                   Donar
-                </motion.a>
+                </a>
               </div>
             </div>
 
@@ -523,14 +364,9 @@ export default function AsociarsePage() {
                   placeholder="Tu email"
                   className="w-full px-4 py-2 bg-beige text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
                 />
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full btn-primary px-4 py-2 font-raleway-semibold"
-                >
+                <button type="submit" className="w-full btn-primary px-4 py-2 font-raleway-semibold">
                   Suscribirse
-                </motion.button>
+                </button>
               </form>
             </div>
           </div>
@@ -538,20 +374,18 @@ export default function AsociarsePage() {
           {/* Social Links */}
           <div className="border-t border-gray-600 pt-8 mb-8">
             <div className="flex justify-center space-x-6">
-              <motion.a
+              <a
                 href="https://x.com/Aprosex"
-                whileHover={{ scale: 1.2 }}
                 className="text-white hover:text-rojo-persa transition-colors duration-300"
               >
                 <Twitter size={24} />
-              </motion.a>
-              <motion.a
+              </a>
+              <a
                 href="https://www.instagram.com/aprosex"
-                whileHover={{ scale: 1.2 }}
                 className="text-white hover:text-rojo-persa transition-colors duration-300"
               >
                 <Instagram size={24} />
-              </motion.a>
+              </a>
             </div>
           </div>
 

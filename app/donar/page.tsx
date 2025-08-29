@@ -1,48 +1,9 @@
 "use client"
-
-import type React from "react"
-import { useState, useEffect } from "react"
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+import { useState } from "react"
 import { Menu, X, Mail, MapPin, Twitter, Instagram } from "lucide-react"
-
-// Animation variants
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-}
-
-// Animated section component
-function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
-
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={fadeInUp}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
-}
 
 export default function DonarPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [currentTextIndex, setCurrentTextIndex] = useState(0)
-
-  const rotatingTexts = ["una organización de activismo", "un espacio cultural", "un centro de aprendizaje", "un hogar"]
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentTextIndex((prevIndex) => (prevIndex + 1) % rotatingTexts.length)
-    }, 3000)
-
-    return () => clearInterval(intervalId)
-  }, [])
 
   const navigation = [
     { name: "Inicio", href: "/" },
@@ -71,8 +32,8 @@ export default function DonarPage() {
               {navigation.map((item) => (
                 <a
                   key={item.name}
-                  href={item.href}
                   className="text-cafe hover:text-rojo-persa font-raleway-medium transition-colors duration-300"
+                  href={item.href}
                 >
                   {item.name}
                 </a>
@@ -81,10 +42,10 @@ export default function DonarPage() {
 
             {/* CTA Buttons - Desktop */}
             <div className="hidden lg:flex space-x-4">
-              <a href="/asociarse" className="btn-primary px-6 py-2 font-raleway-semibold">
+              <a className="btn-primary px-6 py-2 font-raleway-semibold" href="/asociarse">
                 Asociarse
               </a>
-              <a href="/donar" className="btn-secondary px-6 py-2 font-raleway-semibold">
+              <a className="btn-secondary px-6 py-2 font-raleway-semibold" href="/donar">
                 Donar
               </a>
             </div>
@@ -100,17 +61,35 @@ export default function DonarPage() {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="lg:hidden py-4 space-y-4">
-              {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="block text-cafe hover:text-rojo-persa font-raleway-medium transition-colors duration-300"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
-              ))}
+            <div className="lg:hidden">
+              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-melon">
+                {navigation.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="block px-3 py-2 text-cafe hover:text-rojo-persa font-raleway-medium"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                ))}
+                <div className="pt-4 space-y-2">
+                  <a
+                    href="/asociarse"
+                    className="block btn-primary px-6 py-2 font-raleway-semibold text-center"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Asociarse
+                  </a>
+                  <a
+                    href="/donar"
+                    className="block btn-secondary px-6 py-2 font-raleway-semibold text-center"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Donar
+                  </a>
+                </div>
+              </div>
             </div>
           )}
         </div>
@@ -119,115 +98,79 @@ export default function DonarPage() {
       {/* Hero Section */}
       <section id="inicio" className="py-16 lg:py-24 bg-[rgba(215,189,172,1)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-12"
-          >
+          <div className="mb-12">
             <h1 className="text-8xl lg:text-9xl xl:text-[12rem] font-overwave text-cafe mb-8 tracking-widest">
               APROSEX
             </h1>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-2xl lg:text-4xl font-raleway-light text-cafe leading-relaxed"
-          >
-            es{" "}
-            <motion.span
-              key={currentTextIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="text-rojo-persa font-raleway-semibold inline-block"
-            >
-              {rotatingTexts[currentTextIndex]}
-            </motion.span>
-          </motion.div>
+          </div>
+          <div className="text-2xl lg:text-4xl font-raleway-light text-cafe leading-relaxed">
+            es <span className="text-rojo-persa font-raleway-semibold inline-block">una organización de activismo</span>
+          </div>
         </div>
       </section>
 
       {/* Page Title Section */}
       <section className="py-16 lg:py-24 bg-melon">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+          <div>
             <h2 className="text-6xl font-raleway-bold text-rojo-persa mb-8 lg:text-6xl tracking-normal">Donar</h2>
             <p className="text-2xl lg:text-3xl font-raleway-light text-cafe leading-relaxed">
               Apoya nuestra lucha por los derechos
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Impact Section */}
+      {/* What donations make possible */}
       <section className="py-16 lg:py-24 bg-tea-rose">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
+          <div>
             <h3 className="text-3xl lg:text-4xl font-raleway-bold text-rojo-persa mb-12 text-center">
               Tu donación hace posible
             </h3>
-          </AnimatedSection>
-
+          </div>
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <AnimatedSection>
+            <div>
               <div className="bg-beige p-8 text-center h-full flex flex-col">
                 <div className="bg-beige p-4 w-16 h-16 mx-auto mb-6 flex items-center justify-center">
-                  <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/fusta-igKuxXNGpyZlsWaA8MW6Y4rpmU5vBI.png"
-                    alt="Fusta icon"
-                    className="w-12 h-12 object-contain"
-                  />
+                  <img src="/images/fusta.png" alt="Fusta icon" className="w-12 h-12 object-contain" />
                 </div>
                 <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-4">Talleres Gratuitos</h4>
                 <p className="text-cafe font-raleway-regular flex-grow">
                   Formación en derechos legales, seguridad digital y autodefensa para trabajadoras sexuales.
                 </p>
               </div>
-            </AnimatedSection>
-
-            <AnimatedSection>
+            </div>
+            <div>
               <div className="bg-beige p-8 text-center h-full flex flex-col">
                 <div className="bg-beige p-4 w-16 h-16 mx-auto mb-6 flex items-center justify-center">
-                  <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/tacon-PL1OiHXreWa3km673NdfPsZAKHwvrF.png"
-                    alt="Tacón icon"
-                    className="w-12 h-12 object-contain"
-                  />
+                  <img src="/images/tacon.png" alt="Tacón icon" className="w-12 h-12 object-contain" />
                 </div>
                 <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-4">Activismo</h4>
                 <p className="text-cafe font-raleway-regular flex-grow">
                   Campañas de visibilización y lucha contra la discriminación y el estigma.
                 </p>
               </div>
-            </AnimatedSection>
-
-            <AnimatedSection>
+            </div>
+            <div>
               <div className="bg-beige p-8 text-center h-full flex flex-col">
                 <div className="bg-beige p-4 w-16 h-16 mx-auto mb-6 flex items-center justify-center">
-                  <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/butt-RBCLYw0AC9lJL8MATaH6fGPzCMta7Z.png"
-                    alt="Butt plug icon"
-                    className="w-12 h-12 object-contain"
-                  />
+                  <img src="/images/butt.png" alt="Butt plug icon" className="w-12 h-12 object-contain" />
                 </div>
                 <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-4">Cultura Puta</h4>
                 <p className="text-cafe font-raleway-regular flex-grow">
                   Proyectos artísticos y culturales que reivindican nuestra identidad y resistencia.
                 </p>
               </div>
-            </AnimatedSection>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Bank Account Section */}
+      {/* Bank Transfer Section */}
       <section className="py-16 lg:py-24 bg-melon">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
+          <div>
             <div className="bg-beige p-8 lg:p-12">
               <div className="text-center mb-8">
                 <h3 className="text-3xl font-raleway-bold text-rojo-persa mb-4">Realizar Donación</h3>
@@ -272,21 +215,20 @@ export default function DonarPage() {
                 </ul>
               </div>
             </div>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
-      {/* Alternative Ways to Help */}
+      {/* Other ways to help */}
       <section className="py-16 lg:py-24 bg-tea-rose">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
+          <div>
             <h3 className="text-3xl lg:text-4xl font-raleway-bold text-rojo-persa mb-12 text-center">
               Otras formas de ayudar
             </h3>
-          </AnimatedSection>
-
+          </div>
           <div className="grid md:grid-cols-3 gap-8">
-            <AnimatedSection>
+            <div>
               <div className="bg-beige p-8 text-center h-full flex flex-col">
                 <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-4">Voluntariado</h4>
                 <p className="text-cafe font-raleway-regular mb-6 flex-grow">
@@ -296,9 +238,8 @@ export default function DonarPage() {
                   Contáctanos
                 </a>
               </div>
-            </AnimatedSection>
-
-            <AnimatedSection>
+            </div>
+            <div>
               <div className="bg-beige p-8 text-center h-full flex flex-col">
                 <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-4">Difusión</h4>
                 <p className="text-cafe font-raleway-regular mb-6 flex-grow">
@@ -313,9 +254,8 @@ export default function DonarPage() {
                   </a>
                 </div>
               </div>
-            </AnimatedSection>
-
-            <AnimatedSection>
+            </div>
+            <div>
               <div className="bg-beige p-8 text-center h-full flex flex-col">
                 <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-4">Asociarse</h4>
                 <p className="text-cafe font-raleway-regular mb-6 flex-grow">
@@ -325,7 +265,7 @@ export default function DonarPage() {
                   Asociarse
                 </a>
               </div>
-            </AnimatedSection>
+            </div>
           </div>
         </div>
       </section>
@@ -338,20 +278,12 @@ export default function DonarPage() {
             <div>
               <h3 className="text-xl font-raleway-bold text-rojo-persa mb-6">Apoya la lucha por nuestros derechos</h3>
               <div className="space-y-4">
-                <motion.a
-                  href="/asociarse"
-                  whileHover={{ scale: 1.05 }}
-                  className="block btn-primary px-6 py-3 font-raleway-semibold text-center"
-                >
+                <a href="/asociarse" className="block btn-primary px-6 py-3 font-raleway-semibold text-center">
                   Asociarse
-                </motion.a>
-                <motion.a
-                  href="/donar"
-                  whileHover={{ scale: 1.05 }}
-                  className="block btn-secondary px-6 py-3 font-raleway-semibold text-center"
-                >
+                </a>
+                <a href="/donar" className="block btn-secondary px-6 py-3 font-raleway-semibold text-center">
                   Donar
-                </motion.a>
+                </a>
               </div>
             </div>
 
@@ -396,14 +328,9 @@ export default function DonarPage() {
                   placeholder="Tu email"
                   className="w-full px-4 py-2 bg-beige text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
                 />
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full btn-primary px-4 py-2 font-raleway-semibold"
-                >
+                <button type="submit" className="w-full btn-primary px-4 py-2 font-raleway-semibold">
                   Suscribirse
-                </motion.button>
+                </button>
               </form>
             </div>
           </div>
@@ -411,20 +338,18 @@ export default function DonarPage() {
           {/* Social Links */}
           <div className="border-t border-gray-600 pt-8 mb-8">
             <div className="flex justify-center space-x-6">
-              <motion.a
+              <a
                 href="https://x.com/Aprosex"
-                whileHover={{ scale: 1.2 }}
                 className="text-white hover:text-rojo-persa transition-colors duration-300"
               >
                 <Twitter size={24} />
-              </motion.a>
-              <motion.a
+              </a>
+              <a
                 href="https://www.instagram.com/aprosex"
-                whileHover={{ scale: 1.2 }}
                 className="text-white hover:text-rojo-persa transition-colors duration-300"
               >
                 <Instagram size={24} />
-              </motion.a>
+              </a>
             </div>
           </div>
 

@@ -125,7 +125,7 @@ export default function FinanzasSeguras() {
             transition={{ duration: 0.8 }}
             className="mb-12"
           >
-            <h1 className="text-8xl lg:text-9xl xl:text-[12rem] font-overwave text-cafe mb-8 tracking-widest">
+            <h1 className="lg:text-9xl xl:text-[12rem] font-overwave text-cafe mb-8 tracking-widest text-6xl">
               APROSEX
             </h1>
           </motion.div>
@@ -380,7 +380,7 @@ export default function FinanzasSeguras() {
                 <ul className="list-disc list-inside font-raleway-regular text-cafe">
                   <li>Control de ingresos: sabes exactamente cuánto ganas</li>
                   <li>Detección de fraudes: identificas transacciones incorrectas</li>
-                  <li>Regularización fiscal: si decides darte de alta como autónome</li>
+                  <li>Regularización fiscal: si decides darte de alta como autónomo</li>
                   <li>Acceso a prestaciones: derecho a pensión, cobertura sanitaria</li>
                   <li>Créditos y hipotecas: demostrar ingresos regulares</li>
                 </ul>
@@ -466,20 +466,18 @@ export default function FinanzasSeguras() {
             <div>
               <h3 className="text-xl font-raleway-bold text-rojo-persa mb-6">Apoya la lucha por nuestros derechos</h3>
               <div className="space-y-4">
-                <motion.a
+                <a
                   href="/asociarse"
-                  whileHover={{ scale: 1.05 }}
                   className="block btn-primary px-6 py-3 rounded-full font-raleway-semibold text-center"
                 >
                   Asociarse
-                </motion.a>
-                <motion.a
+                </a>
+                <a
                   href="/donar"
-                  whileHover={{ scale: 1.05 }}
                   className="block btn-secondary px-6 py-3 rounded-full font-raleway-semibold text-center"
                 >
                   Donar
-                </motion.a>
+                </a>
               </div>
             </div>
 
@@ -524,14 +522,9 @@ export default function FinanzasSeguras() {
                   placeholder="Tu email"
                   className="w-full px-4 py-2 rounded-lg bg-beige text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
                 />
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full btn-primary px-4 py-2 rounded-lg font-raleway-semibold"
-                >
+                <button type="submit" className="w-full btn-primary px-4 py-2 rounded-lg font-raleway-semibold">
                   Suscribirse
-                </motion.button>
+                </button>
               </form>
             </div>
           </div>
@@ -539,20 +532,18 @@ export default function FinanzasSeguras() {
           {/* Social Links */}
           <div className="border-t border-gray-600 pt-8 mb-8">
             <div className="flex justify-center space-x-6">
-              <motion.a
+              <a
                 href="https://x.com/Aprosex"
-                whileHover={{ scale: 1.2 }}
                 className="text-white hover:text-rojo-persa transition-colors duration-300"
               >
                 <Twitter size={24} />
-              </motion.a>
-              <motion.a
+              </a>
+              <a
                 href="https://www.instagram.com/aprosex"
-                whileHover={{ scale: 1.2 }}
                 className="text-white hover:text-rojo-persa transition-colors duration-300"
               >
                 <Instagram size={24} />
-              </motion.a>
+              </a>
             </div>
           </div>
 

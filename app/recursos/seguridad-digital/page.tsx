@@ -124,7 +124,7 @@ export default function SeguridadDigitalPage() {
             transition={{ duration: 0.8 }}
             className="mb-12"
           >
-            <h1 className="text-8xl lg:text-9xl xl:text-[12rem] font-overwave text-cafe mb-8 tracking-widest">
+            <h1 className="lg:text-9xl xl:text-[12rem] font-overwave text-cafe mb-8 tracking-widest text-6xl">
               APROSEX
             </h1>
           </motion.div>
@@ -443,65 +443,52 @@ export default function SeguridadDigitalPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-cafe text-white py-12">
+      <footer className="bg-cafe text-white py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-            {/* About Us */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            {/* Support Section */}
             <div>
-              <img src="/images/logo-footer.png" alt="Aprosex Logo" className="h-12 lg:h-16 w-auto mb-4" />
-              <p className="text-sm font-raleway-regular">
-                Somos una asociación sin ánimo de lucro dedicada a la defensa de los derechos de los trabajadores
-                sexuales en España.
-              </p>
+              <h3 className="text-xl font-raleway-bold text-rojo-persa mb-6">Apoya la lucha por nuestros derechos</h3>
+              <div className="space-y-4">
+                <a
+                  href="/asociarse"
+                  className="block btn-primary px-6 py-3 rounded-full font-raleway-semibold text-center"
+                >
+                  Asociarse
+                </a>
+                <a
+                  href="/donar"
+                  className="block btn-secondary px-6 py-3 rounded-full font-raleway-semibold text-center"
+                >
+                  Donar
+                </a>
+              </div>
             </div>
 
             {/* Quick Navigation */}
             <div>
-              <h3 className="text-xl font-raleway-bold text-rojo-persa mb-4">Navegación rápida</h3>
-              <ul className="space-y-2 font-raleway-regular">
-                <li>
-                  <a href="/" className="hover:text-rojo-persa transition-colors duration-300">
-                    Inicio
-                  </a>
-                </li>
-                <li>
-                  <a href="/aprosex" className="hover:text-rojo-persa transition-colors duration-300">
-                    Aprosex
-                  </a>
-                </li>
-                <li>
-                  <a href="/recursos" className="hover:text-rojo-persa transition-colors duration-300">
-                    Recursos
-                  </a>
-                </li>
-                <li>
-                  <a href="/actualidad" className="hover:text-rojo-persa transition-colors duration-300">
-                    Actualidad
-                  </a>
-                </li>
-                <li>
-                  <a href="/calendario" className="hover:text-rojo-persa transition-colors duration-300">
-                    Calendario
-                  </a>
-                </li>
-                <li>
-                  <a href="/contacto" className="hover:text-rojo-persa transition-colors duration-300">
-                    Contacto
-                  </a>
-                </li>
+              <h3 className="text-xl font-raleway-bold text-rojo-persa mb-6">Navegación rápida</h3>
+              <ul className="space-y-3 font-raleway-regular">
+                {navigation.map((item) => (
+                  <li key={item.name}>
+                    <a href={item.href} className="hover:text-rojo-persa transition-colors duration-300">
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
 
             {/* Contact Info */}
             <div>
-              <h3 className="text-xl font-raleway-bold text-rojo-persa mb-4">Contacto</h3>
-              <div className="space-y-2 font-raleway-regular">
-                <div className="flex items-center space-x-2">
-                  <Mail size={16} />
+              <h3 className="text-xl font-raleway-bold text-rojo-persa mb-6">Contacto</h3>
+              <div className="space-y-3 font-raleway-regular">
+                <div className="flex items-center space-x-3">
+                  <Mail size={18} />
                   <span>info@aprosex.org</span>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <MapPin size={16} />
+                <div className="flex items-center space-x-3">
+                  <MapPin size={18} />
                   <span>Barcelona, España</span>
                 </div>
               </div>
@@ -509,50 +496,43 @@ export default function SeguridadDigitalPage() {
 
             {/* Newsletter */}
             <div>
-              <h3 className="text-xl font-raleway-bold text-rojo-persa mb-4">Newsletter</h3>
-              <p className="mb-2 text-sm font-raleway-regular">
+              <h3 className="text-xl font-raleway-bold text-rojo-persa mb-6">Newsletter</h3>
+              <p className="mb-4 text-sm font-raleway-regular">
                 Mantente informade sobre nuestras actividades y recursos.
               </p>
-              <form className="space-y-2">
+              <form className="space-y-3">
                 <input
                   type="email"
                   placeholder="Tu email"
-                  className="w-full px-3 py-2 rounded-md bg-beige text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
+                  className="w-full px-4 py-2 rounded-lg bg-beige text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
                 />
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full btn-primary px-4 py-2 rounded-md font-raleway-semibold"
-                >
+                <button type="submit" className="w-full btn-primary px-4 py-2 rounded-lg font-raleway-semibold">
                   Suscribirse
-                </motion.button>
+                </button>
               </form>
             </div>
           </div>
 
           {/* Social Links */}
-          <div className="border-t border-gray-600 pt-6 mb-6">
-            <div className="flex justify-center space-x-4">
-              <motion.a
+          <div className="border-t border-gray-600 pt-8 mb-8">
+            <div className="flex justify-center space-x-6">
+              <a
                 href="https://x.com/Aprosex"
-                whileHover={{ scale: 1.2 }}
                 className="text-white hover:text-rojo-persa transition-colors duration-300"
               >
-                <Twitter size={20} />
-              </motion.a>
-              <motion.a
+                <Twitter size={24} />
+              </a>
+              <a
                 href="https://www.instagram.com/aprosex"
-                whileHover={{ scale: 1.2 }}
                 className="text-white hover:text-rojo-persa transition-colors duration-300"
               >
-                <Instagram size={20} />
-              </motion.a>
+                <Instagram size={24} />
+              </a>
             </div>
           </div>
 
           {/* Copyright */}
-          <div className="text-center text-sm text-gray-400 border-t border-gray-600 pt-6 font-raleway-regular">
+          <div className="text-center text-sm text-gray-400 border-t border-gray-600 pt-8 font-raleway-regular">
             <p>&copy; 2025 Aprosex - Asociación de Profesionales del Sexo. Todos los derechos reservados.</p>
           </div>
         </div>

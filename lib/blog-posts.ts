@@ -16,7 +16,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Nos alegra comunicaros que Aprosex, una de las asociaciones pro-derechos de más larga tradición del Estado español, retoma hoy su actividad con fuerza, ilusión, conciencia colectiva y rumbo renovado.",
     author: "Directiva APROSEX",
-    date: "15 de Enero, 2024",
+    date: "30 de Agosto, 2025",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0151.jpg-FBetv2qUPNN5rYEe1frZS0bNFeCWsY.jpeg",
     featured: true,
     content: `
