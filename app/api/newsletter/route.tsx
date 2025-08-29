@@ -5,13 +5,7 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json()
-    const { email } = body
-
-    // Validate email
-    if (!email) {
-      return NextResponse.json({ error: "Email es obligatorio" }, { status: 400 })
-    }
+    const { email } = await request.json()
 
     // Add to Mailchimp
     const mailchimpResponse = await fetch(`https://us22.api.mailchimp.com/3.0/lists/5ebabd15c0/members`, {
@@ -28,51 +22,43 @@ export async function POST(request: NextRequest) {
 
     const mailchimpData = await mailchimpResponse.json()
 
-    // Handle duplicate email
-    if (mailchimpResponse.status === 400 && mailchimpData.title === "Member Exists") {
-      return NextResponse.json({
-        success: true,
-        message: "Ya estás suscrito a nuestro newsletter",
-      })
+    if (!mailchimpResponse.ok && mailchimpData.title !== "Member Exists") {
+      throw new Error(`Mailchimp error: ${mailchimpData.detail}`)
     }
 
-    if (!mailchimpResponse.ok) {
-      throw new Error("Error adding to Mailchimp")
-    }
-
-    // Send welcome email with Resend
+    // Send welcome email
     await resend.emails.send({
-      from: "noreply@aprosex.org",
+      from: "onboarding@resend.dev",
       to: email,
-      subject: "¡Bienvenide al newsletter de APROSEX!",
+      subject: "¡Bienvenida al newsletter de APROSEX!",
       html: `
         <h2>¡Gracias por suscribirte!</h2>
         <p>Te has suscrito correctamente al newsletter de APROSEX.</p>
-        <p>Recibirás noticias, eventos y recursos sobre derechos sexuales y trabajo sexual.</p>
+        <p>Recibirás noticias, eventos y recursos sobre derechos de las trabajadoras sexuales.</p>
         <br>
-        <p>¡Bienvenide a la comunidad!</p>
+        <p>¡Bienvenida a la comunidad!</p>
         <p>Equipo APROSEX</p>
       `,
     })
 
-    // Notify APROSEX of new subscription
+    // Notify APROSEX
     await resend.emails.send({
-      from: "noreply@aprosex.org",
+      from: "onboarding@resend.dev",
       to: "info@aprosex.org",
       subject: "Nueva suscripción al newsletter",
       html: `
         <h2>Nueva suscripción</h2>
-        <p><strong>Email:</strong> ${email}</p>
-        <p>Se ha añadido automáticamente a Mailchimp.</p>
+        <p>Nueva suscripción al newsletter: ${email}</p>
       `,
     })
 
     return NextResponse.json({
       success: true,
-      message: "¡Te has suscrito correctamente!",
+      message: "Suscripción exitosa",
+      isExisting: mailchimpData.title === "Member Exists",
     })
   } catch (error) {
     console.error("Error in newsletter subscription:", error)
-    return NextResponse.json({ error: "Error al suscribirse" }, { status: 500 })
+    return NextResponse.json({ success: false, message: "Error en la suscripción" }, { status: 500 })
   }
 }
