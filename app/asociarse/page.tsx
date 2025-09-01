@@ -126,171 +126,41 @@ export default function AsociarsePage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div>
             <div className="bg-beige p-8 lg:p-12">
-              <h3 className="text-3xl font-raleway-bold text-rojo-persa mb-8 text-center">Formulario de Asociación</h3>
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="nombre" className="block text-sm font-raleway-semibold text-cafe mb-2">
-                      Nombre completo *
-                    </label>
-                    <input
-                      type="text"
-                      id="nombre"
-                      name="nombre"
-                      required
-                      className="w-full px-4 py-3 bg-white text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
-                      placeholder="Tu nombre completo"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-raleway-semibold text-cafe mb-2">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      className="w-full px-4 py-3 bg-white text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
-                      placeholder="tu@email.com"
-                    />
-                  </div>
-                </div>
+              <h3 className="text-3xl font-raleway-bold text-rojo-persa mb-8 text-center">Cómo asociarse</h3>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="telefono" className="block text-sm font-raleway-semibold text-cafe mb-2">
-                      Teléfono
-                    </label>
-                    <input
-                      type="tel"
-                      id="telefono"
-                      name="telefono"
-                      className="w-full px-4 py-3 bg-white text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
-                      placeholder="+34 XXX XXX XXX"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="ciudad" className="block text-sm font-raleway-semibold text-cafe mb-2">
-                      Ciudad *
-                    </label>
-                    <input
-                      type="text"
-                      id="ciudad"
-                      name="ciudad"
-                      required
-                      className="w-full px-4 py-3 bg-white text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
-                      placeholder="Tu ciudad"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="edad" className="block text-sm font-raleway-semibold text-cafe mb-2">
-                    Edad *
-                  </label>
-                  <input
-                    type="number"
-                    id="edad"
-                    name="edad"
-                    required
-                    min="18"
-                    max="99"
-                    className="w-full px-4 py-3 bg-white text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
-                    placeholder="Tu edad"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="experiencia" className="block text-sm font-raleway-semibold text-cafe mb-2">
-                    Experiencia en trabajo sexual
-                  </label>
-                  <select
-                    id="experiencia"
-                    name="experiencia"
-                    className="w-full px-4 py-3 bg-white text-cafe focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
+              <div className="text-center max-w-3xl mx-auto">
+                <p className="text-lg font-raleway-regular text-cafe mb-6">
+                  Si quieres asociarte, por favor envíanos un email a{" "}
+                  <a
+                    href="mailto:aprosex@aprosex.org"
+                    className="text-rojo-persa font-raleway-semibold hover:underline"
                   >
-                    <option value="">Selecciona tu experiencia</option>
-                    <option value="menos-1">Menos de 1 año</option>
-                    <option value="1-3">1-3 años</option>
-                    <option value="3-5">3-5 años</option>
-                    <option value="5-10">5-10 años</option>
-                    <option value="mas-10">Más de 10 años</option>
-                    <option value="no-aplica">No aplica</option>
-                  </select>
-                </div>
+                    aprosex@aprosex.org
+                  </a>{" "}
+                  con los siguientes datos:
+                </p>
 
-                <div>
-                  <label htmlFor="motivacion" className="block text-sm font-raleway-semibold text-cafe mb-2">
-                    ¿Por qué quieres asociarte a APROSEX? *
-                  </label>
-                  <textarea
-                    id="motivacion"
-                    name="motivacion"
-                    required
-                    rows={4}
-                    className="w-full px-4 py-3 bg-white text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular resize-none"
-                    placeholder="Cuéntanos qué te motiva a unirte a nuestra asociación..."
-                  />
-                </div>
+                <ul className="text-left text-cafe font-raleway-regular mb-6 space-y-2">
+                  <li>• Nombre</li>
+                  <li>• Email</li>
+                  <li>• Teléfono</li>
+                  <li>• Ciudad</li>
+                  <li>• Edad</li>
+                </ul>
 
-                <div>
-                  <label htmlFor="contribucion" className="block text-sm font-raleway-semibold text-cafe mb-2">
-                    ¿Cómo te gustaría contribuir a APROSEX?
-                  </label>
-                  <textarea
-                    id="contribucion"
-                    name="contribucion"
-                    rows={4}
-                    className="w-full px-4 py-3 bg-white text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular resize-none"
-                    placeholder="Talleres, arte, activismo, apoyo legal, etc..."
-                  />
-                </div>
+                <p className="text-cafe font-raleway-regular mb-6">
+                  ...también una pequeña presentación sobre por qué quieres unirte a Aprosex, cuanto tiempo llevas en el
+                  trabajo sexual y cómo te gustaría contribuir a Aprosex.
+                </p>
 
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <input
-                      type="checkbox"
-                      id="privacidad"
-                      name="privacidad"
-                      required
-                      className="mt-1 mr-3 h-4 w-4 text-rojo-persa focus:ring-rojo-persa"
-                    />
-                    <label htmlFor="privacidad" className="text-sm font-raleway-regular text-cafe">
-                      Acepto la política de privacidad y el tratamiento de mis datos personales según la normativa
-                      vigente. Entiendo que mis datos serán utilizados únicamente para fines asociativos y no serán
-                      compartidos con terceros. *
-                    </label>
-                  </div>
-                  <div className="flex items-start">
-                    <input
-                      type="checkbox"
-                      id="whatsapp"
-                      name="whatsapp"
-                      className="mt-1 mr-3 h-4 w-4 text-rojo-persa focus:ring-rojo-persa"
-                    />
-                    <label htmlFor="whatsapp" className="text-sm font-raleway-regular text-cafe">
-                      Quiero recibir información por WhatsApp
-                    </label>
-                  </div>
-                  <div className="flex items-start">
-                    <input
-                      type="checkbox"
-                      id="newsletter"
-                      name="newsletter"
-                      className="mt-1 mr-3 h-4 w-4 text-rojo-persa focus:ring-rojo-persa"
-                    />
-                    <label htmlFor="newsletter" className="text-sm font-raleway-regular text-cafe">
-                      Quiero recibir el newsletter de APROSEX con información sobre eventos, talleres y noticias
-                      relevantes.
-                    </label>
-                  </div>
-                </div>
+                <p className="text-cafe font-raleway-regular mb-6">
+                  Haznos saber también si quieres recibir Whatsapps con información y estar en nuestra Newsletter.
+                </p>
 
-                <button type="submit" className="w-full px-6 py-4 font-raleway-semibold text-lg btn-primary">
-                  Enviar Solicitud de Asociación
-                </button>
-              </form>
+                <p className="text-cafe font-raleway-regular font-raleway-semibold">
+                  Tenemos muchas ganas de saber de tí!
+                </p>
+              </div>
 
               <div className="mt-8 p-6 bg-rojo-persa/10 border-l-4 border-rojo-persa">
                 <h4 className="font-raleway-semibold text-cafe mb-2">Información importante:</h4>

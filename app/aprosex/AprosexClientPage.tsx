@@ -161,7 +161,7 @@ export default function AprosexClientPage() {
             <h3 className="text-2xl lg:text-3xl font-raleway-semibold text-cafe mb-8 text-center">
               Bienvenide compañere, esta es tu casa.
             </h3>
-            <p className="font-raleway-regular text-cafe leading-relaxed text-center max-w-4xl mx-auto tracking-normal text-base">
+            <p className="text-lg font-raleway-regular text-cafe leading-relaxed text-center max-w-4xl mx-auto">
               Somos un colectivo horizontal, transfeminista, interseccional y antirracista formado por trabajadores
               sexuales unides por la necesidad de luchar por nuestros derechos laborales y la desestigmatización social.
               Somos les herederes de una larga historia de activismo feminista con base en Barcelona que ha consolidado
@@ -180,25 +180,25 @@ export default function AprosexClientPage() {
               Nueva Etapa: Cultura Puta como Resistencia
             </h3>
             <div className="space-y-6 text-cafe font-raleway-regular leading-relaxed">
-              <p className="text-base">
+              <p>
                 Ahora, tras un periodo de reflexión y renovación, hemos impulsado con más fuerza e ilusión que nunca una
                 nueva etapa para APROSEX en la que aspiramos a convertirnos en refugio para les putes a través del
                 activismo y del arte. Reivindicamos y nos reapropiamos de una cultura puta que nos ha sido expoliada por
                 décadas de estigmatización y silenciamiento.
               </p>
-              <p className="text-base">
+              <p>
                 La cultura puta no es solo resistencia: es creación, es memoria, es sabiduría ancestral sobre placer,
                 cuerpos y sexualidad que la sociedad ha intentado borrar. Es el conocimiento que generamos en nuestros
                 trabajos, las estrategias de supervivencia que desarrollamos, el arte que creamos desde nuestras
                 experiencias, la solidaridad que tejemos entre nosotras. Es política hecha cuerpo, es feminismo vivido
                 en la práctica diaria.
               </p>
-              <p className="text-base">
+              <p>
                 Nuestro objetivo es utilizar esta cultura puta como una poderosa arma para nuestra lucha por la justicia
                 social. A través del arte, la performance, la literatura, el teatro y la educación sexual, transformamos
                 el estigma en orgullo, la marginalización en centro de poder, el silencio en grito colectivo.
               </p>
-              <p className="font-raleway-semibold text-rojo-persa text-center mt-8 text-lg">
+              <p className="text-xl font-raleway-semibold text-rojo-persa text-center mt-8">
                 Nada por les putas sin les putas.
               </p>
             </div>
@@ -210,11 +210,11 @@ export default function AprosexClientPage() {
       <section className="bg-beige">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <AnimatedSection>
-            <h3 className="lg:text-3xl font-raleway-bold text-rojo-persa mb-8 text-center text-2xl">
+            <h3 className="text-2xl lg:text-3xl font-raleway-bold text-rojo-persa mb-8 text-center">
               Horizontalidad y Autoorganización
             </h3>
             <div className="space-y-6 text-cafe font-raleway-regular leading-relaxed">
-              <p className="text-base">
+              <p>
                 Creemos que nuestro colectivo está lleno de personas creativas, comprometidas y llenas de buenas ideas.
                 Por eso, aunque apreciamos el apoyo de les aliades, esta asociación será solo nuestra. Queremos abrazar
                 la pluralidad de nuestro colectivo y convertirla en nuestra fuerza, para tomar de forma horizontal las
@@ -223,7 +223,7 @@ export default function AprosexClientPage() {
               <p className="text-xl font-raleway-semibold text-rojo-persa text-center">
                 APROSEX es casa de putas y solo les putas la construyen.
               </p>
-              <p className="text-base">
+              <p>
                 Así que, hermane pute, seas quien seas, vengas de donde vengas, te vemos, te queremos y te necesitamos.
                 Coge tus tacones y tu paraguas rojo y, como dice Georgina Orellana, "vayamos al barro". Te invitamos a
                 participar y a hacer más grande a APROSEX con tus saberes, tu arte y tu cultura puta. A que vengas a
@@ -254,7 +254,7 @@ export default function AprosexClientPage() {
                   <div className="bg-beige p-8 shadow-lg">
                     <div className="text-2xl font-raleway-bold text-rojo-persa mb-2">2013</div>
                     <h3 className="text-xl font-raleway-semibold text-cafe mb-4">Fundación de APROSEX</h3>
-                    <p className="text-cafe font-raleway-regular tracking-tight">
+                    <p className="text-cafe font-raleway-regular">
                       APROSEX nace en 2013 a partir de la soledad que vivíamos les trabajadores sexuales independientes,
                       aislades en habitaciones o pisos con nuestros ordenadores, esperando clientes. Reflexionamos sobre
                       el estigma y las difíciles circunstancias económicas que enfrentábamos: deudas, ser madres
@@ -276,7 +276,7 @@ export default function AprosexClientPage() {
                     <h3 className="text-xl font-raleway-semibold text-cafe mb-4">
                       Consciencia y Lucha por los Derechos
                     </h3>
-                    <p className="text-cafe font-raleway-regular tracking-tight">
+                    <p className="text-cafe font-raleway-regular">
                       Durante estos años, comenzamos una intensa lucha por los derechos de nuestro colectivo. Tomamos
                       conciencia de la violencia institucional que sufrimos simplemente por ser trabajadores sexuales.
                       Nos enfrentamos a la falta de reconocimiento de nuestro trabajo, derivada de intereses económicos
@@ -295,7 +295,7 @@ export default function AprosexClientPage() {
                   <div className="bg-beige p-8 shadow-lg">
                     <div className="text-2xl font-raleway-bold text-rojo-persa mb-2">2017</div>
                     <h3 className="text-xl font-raleway-semibold text-cafe mb-4">Consolidación de la Organización</h3>
-                    <p className="text-cafe font-raleway-regular tracking-tight">
+                    <p className="text-cafe font-raleway-regular">
                       APROSEX se consolidó como una organización interseccional, feminista y antirracista. Empezamos a
                       combatir no solo el estigma asociado al trabajo sexual, sino también la transfobia que afecta a
                       muchas de nuestres compañeres. En estos años, reforzamos nuestra estructura interna, promoviendo
@@ -313,7 +313,7 @@ export default function AprosexClientPage() {
                   <div className="bg-beige p-8 shadow-lg">
                     <div className="text-2xl font-raleway-bold text-rojo-persa mb-2">2018-2020</div>
                     <h3 className="text-xl font-raleway-semibold text-cafe mb-4">Expansión y Visibilidad</h3>
-                    <p className="text-cafe font-raleway-regular tracking-tight">
+                    <p className="text-cafe font-raleway-regular">
                       Durante estos años, aumentamos nuestra visibilidad y presencia pública. Organizamos numerosos
                       eventos y campañas para informar y sensibilizar sobre la realidad del trabajo sexual. Nuestra
                       lucha se centró en el reconocimiento de nuestros derechos laborales y en la eliminación del
@@ -331,7 +331,7 @@ export default function AprosexClientPage() {
                   <div className="bg-beige p-8 shadow-lg">
                     <div className="text-2xl font-raleway-bold text-rojo-persa mb-2">2021</div>
                     <h3 className="text-xl font-raleway-semibold text-cafe mb-4">Fortalecimiento de la Comunidad</h3>
-                    <p className="text-cafe font-raleway-regular tracking-tight">
+                    <p className="text-cafe font-raleway-regular">
                       En 2021, fortalecimos nuestra comunidad a través de la autorganización y el arte. Realizamos
                       talleres y eventos culturales que no solo educaban, sino que también celebraban la libertad sexual
                       y la diversidad. La organización se convirtió en un espacio de apoyo y solidaridad para todes les
@@ -349,7 +349,7 @@ export default function AprosexClientPage() {
                   <div className="bg-beige p-8 shadow-lg">
                     <div className="text-2xl font-raleway-bold text-rojo-persa mb-2">Presente</div>
                     <h3 className="text-xl font-raleway-semibold text-cafe mb-4">Lucha Continua y Reconocimiento</h3>
-                    <p className="text-cafe font-raleway-regular tracking-tight">
+                    <p className="text-cafe font-raleway-regular">
                       Actualmente, APROSEX sigue siendo una fuerza activa en la lucha por el reconocimiento del trabajo
                       sexual y la eliminación del estigma. Nos enfocamos en la autorganización y la creación de espacios
                       seguros para nuestres afiliades. Continuamos combatiendo la violencia institucional y la
@@ -386,7 +386,7 @@ export default function AprosexClientPage() {
                   <div className="md:w-2/3">
                     <h3 className="text-2xl font-raleway-bold text-rojo-persa mb-2">Linda Porn Davis</h3>
                     <p className="text-lg font-raleway-semibold text-cafe mb-4">Presidenta</p>
-                    <p className="text-cafe font-raleway-regular leading-relaxed text-base">
+                    <p className="text-cafe font-raleway-regular text-sm leading-relaxed">
                       Soy una artista mexicana, trabajadora sexual, madre soltera y migrante con más de una década de
                       militancia en los diversos activismos que me atraviesan. Empecé mi activismo por los derechos de
                       las trabajadoras sexuales en Aprosex hace más de 10 años, organización de la que ahora soy
@@ -429,7 +429,7 @@ export default function AprosexClientPage() {
                   <div className="md:w-2/3">
                     <h3 className="text-2xl font-raleway-bold text-rojo-persa mb-2">Anneke Necro</h3>
                     <p className="text-lg font-raleway-semibold text-cafe mb-4">Secretaria</p>
-                    <p className="text-cafe font-raleway-regular leading-relaxed text-base">
+                    <p className="text-cafe font-raleway-regular text-sm leading-relaxed">
                       Después de ejercer de estilista de moda y directora de arte, decidí canalizar mi creatividad en el
                       mundo del porno y del trabajo sexual. Trabajo como performer y directora en la industria del cine
                       porno, donde dirijo el proyecto audiovisual Mantis Lab y el podcast sobre deseo disidente Hot
@@ -480,10 +480,10 @@ export default function AprosexClientPage() {
                   <div className="md:w-2/3">
                     <h3 className="text-2xl font-raleway-bold text-rojo-persa mb-2">Frida Trejo</h3>
                     <p className="text-lg font-raleway-semibold text-cafe mb-4">Tesorera</p>
-                    <p className="text-cafe font-raleway-regular leading-relaxed text-base">
+                    <p className="text-cafe font-raleway-regular text-sm leading-relaxed">
                       Artista y actriz formada en la compañía, Los Menos teatro, en la obra OLUZ presentada en 2012
                       estando de gira hasta el 2013. Actualmente formo parte de Aprosex con el cargo de tesorera así
-                      como en el documental "La Piel que Arde" como DoP.
+                      como en el documental "La Piel que Arde" como DA.
                       <br />
                       <br />
                       Desde que llegamos a Barcelona en 2013, tuve que crear lo que llamaría mi familia escogida, la
@@ -527,7 +527,7 @@ export default function AprosexClientPage() {
                   <div className="md:w-2/3">
                     <h3 className="text-2xl font-raleway-bold text-rojo-persa mb-2">Chloé Cruz</h3>
                     <p className="text-lg font-raleway-semibold text-cafe mb-4">Colaboradora</p>
-                    <p className="text-cafe font-raleway-regular leading-relaxed text-base">
+                    <p className="text-cafe font-raleway-regular text-sm leading-relaxed">
                       Creativa, neurodivergente e inadaptada. Llegué al trabajo sexual como un pollo sin cabeza,
                       buscando poner en su sitio al patriarcado y a una sociedad que me había abandonado. Siempre lo
                       dije: El estigma que yo cargaba no era el de puta, era el de loca. El trabajo sexual me dio el
