@@ -116,7 +116,7 @@ export default function ContactoPage() {
           <div>
             <h2 className="text-6xl font-raleway-bold text-rojo-persa mb-8 lg:text-6xl tracking-normal">Contacto</h2>
             <p className="text-2xl lg:text-3xl font-raleway-light text-cafe leading-relaxed">
-              Ponte en contacto con nosotras
+              Ponte en contacto con nosotres
             </p>
           </div>
         </div>
@@ -134,7 +134,7 @@ export default function ContactoPage() {
                   <h4 className="text-xl font-raleway-semibold text-rojo-persa mb-3">Email</h4>
                   <p className="text-lg font-raleway-regular text-cafe">
                     <a href="mailto:info@aprosex.org" className="hover:text-rojo-persa transition-colors">
-                      info@aprosex.org
+                      aprosex@aprosex.org
                     </a>
                   </p>
                 </div>
@@ -212,7 +212,7 @@ export default function ContactoPage() {
               <div className="space-y-3 font-raleway-regular">
                 <div className="flex items-center space-x-3">
                   <Mail size={18} />
-                  <span>info@aprosex.org</span>
+                  <span>aprosex@aprosex.org</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin size={18} />
@@ -225,18 +225,9 @@ export default function ContactoPage() {
             <div>
               <h3 className="text-xl font-raleway-bold text-rojo-persa mb-6">Newsletter</h3>
               <p className="mb-4 text-sm font-raleway-regular">
-                Mantente informade sobre nuestras actividades y recursos.
+                Coming sooo 
               </p>
-              <form className="space-y-3">
-                <input
-                  type="email"
-                  placeholder="Tu email"
-                  className="w-full px-4 py-2 bg-beige text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
-                />
-                <button type="submit" className="w-full btn-primary px-4 py-2 font-raleway-semibold">
-                  Suscribirse
-                </button>
-              </form>
+              
             </div>
           </div>
 

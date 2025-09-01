@@ -4,7 +4,7 @@ import type React from "react"
 import { useState, useEffect } from "react"
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
-import { Menu, X, ArrowLeft, Calendar, User, Twitter } from "lucide-react"
+import { Menu, X, ArrowLeft, Calendar, User, Twitter, Mail, MapPin, Instagram } from "lucide-react"
 import { getBlogPost } from "@/lib/blog-posts"
 import { notFound } from "next/navigation"
 
@@ -341,103 +341,85 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       </section>
 
       {/* Footer */}
-      <footer className="bg-cafe text-beige py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            {/* Logo and Description */}
-            <div className="md:col-span-2">
-              <img src="/images/logo.png" alt="Aprosex Logo" className="h-16 w-auto mb-4" />
-              <p className="font-raleway-regular text-lg leading-relaxed mb-6">
-                Asociación de Profesionales del Sexo. Defendemos los derechos laborales, la dignidad y la seguridad de
-                las trabajadoras sexuales en España.
-              </p>
-              <div className="flex space-x-4">
-                <a href="https://x.com/Aprosex" className="text-beige hover:text-melon transition-colors">
-                  <span className="sr-only">Twitter</span>
-                  <Twitter size={24} />
+      <footer className="bg-cafe text-white py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            {/* Support Section */}
+            <div>
+              <h3 className="text-xl font-raleway-bold text-rojo-persa mb-6">Apoya la lucha por nuestros derechos</h3>
+              <div className="space-y-4">
+                <a
+                  href="/asociarse"
+                  className="block btn-primary px-6 py-3 rounded-full font-raleway-semibold text-center"
+                >
+                  Asociarse
                 </a>
-                <a href="https://aprosex.bsky.social" className="text-beige hover:text-melon transition-colors">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944.444 1.85.444 5.55c0 .995.78 9.588 1.875 10.812 1.072 1.2 2.944 1.029 5.178.853 2.329-.183 3.14-1.027 3.14-1.027s-.811.844-3.14 1.027c-2.234.176-4.106.347-5.178-.853C1.224 15.138.444 6.545.444 5.55c0-3.7 2.122-4.606 4.758-2.745C7.954 4.747 10.913 8.686 12 10.8z" />
-                    <path d="M12 10.8c1.087-2.114 4.046-6.053 6.798-7.995C21.434.944 23.556 1.85 23.556 5.55c0 .995-.78 9.588-1.875 10.812-1.072 1.2-2.944 1.029-5.178.853-2.329-.183 3.14-1.027 3.14-1.027s.811.844 3.14 1.027c2.234.176 4.106.347 5.178-.853 1.095-1.224 1.875-9.817 1.875-10.812 0-3.7-2.122-4.606-4.758-2.745C16.046 4.747 13.087 8.686 12 10.8z" />
-                  </svg>
+                <a
+                  href="/donar"
+                  className="block btn-secondary px-6 py-3 rounded-full font-raleway-semibold text-center"
+                >
+                  Donar
                 </a>
               </div>
             </div>
 
-            {/* Quick Links */}
+            {/* Quick Navigation */}
             <div>
-              <h3 className="font-raleway-semibold text-lg mb-4">Navegación</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="/" className="font-raleway-regular hover:text-melon transition-colors">
-                    Inicio
-                  </a>
-                </li>
-                <li>
-                  <a href="/aprosex" className="font-raleway-regular hover:text-melon transition-colors">
-                    Aprosex
-                  </a>
-                </li>
-                <li>
-                  <a href="/recursos" className="font-raleway-regular hover:text-melon transition-colors">
-                    Recursos
-                  </a>
-                </li>
-                <li>
-                  <a href="/actualidad" className="font-raleway-regular hover:text-melon transition-colors">
-                    Actualidad Puta
-                  </a>
-                </li>
-                <li>
-                  <a href="/calendario" className="font-raleway-regular hover:text-melon transition-colors">
-                    Calendario
-                  </a>
-                </li>
-                <li>
-                  <a href="/contacto" className="font-raleway-regular hover:text-melon transition-colors">
-                    Contacto
-                  </a>
-                </li>
+              <h3 className="text-xl font-raleway-bold text-rojo-persa mb-6">Navegación rápida</h3>
+              <ul className="space-y-3 font-raleway-regular">
+                {navigation.map((item) => (
+                  <li key={item.name}>
+                    <a href={item.href} className="hover:text-rojo-persa transition-colors duration-300">
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
 
-            {/* Resources */}
+            {/* Contact Info */}
             <div>
-              <h3 className="font-raleway-semibold text-lg mb-4">Recursos</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    href="/recursos/derechos-legales"
-                    className="font-raleway-regular hover:text-melon transition-colors"
-                  >
-                    Derechos Legales
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/recursos/seguridad-digital"
-                    className="font-raleway-regular hover:text-melon transition-colors"
-                  >
-                    Seguridad Digital
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/recursos/finanzas-seguras"
-                    className="font-raleway-regular hover:text-melon transition-colors"
-                  >
-                    Finanzas Seguras
-                  </a>
-                </li>
-              </ul>
+              <h3 className="text-xl font-raleway-bold text-rojo-persa mb-6">Contacto</h3>
+              <div className="space-y-3 font-raleway-regular">
+                <div className="flex items-center space-x-3">
+                  <Mail size={18} />
+                  <span>aprosex@aprosex.org</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <MapPin size={18} />
+                  <span>Barcelona, España</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Newsletter */}
+            <div>
+              <h3 className="text-xl font-raleway-bold text-rojo-persa mb-6">Newsletter</h3>
+              <p className="mb-4 text-sm font-raleway-regular">Coming soon...</p>
             </div>
           </div>
 
-          <div className="border-t border-beige/20 mt-12 pt-8 text-center">
-            <p className="font-raleway-regular">
-              &copy; 2025 APROSEX - Asociación de Profesionales del Sexo. Todos los derechos reservados.
-            </p>
+          {/* Social Links */}
+          <div className="border-t border-gray-600 pt-8 mb-8">
+            <div className="flex justify-center space-x-6">
+              <a
+                href="https://x.com/Aprosex"
+                className="text-white hover:text-rojo-persa transition-colors duration-300"
+              >
+                <Twitter size={24} />
+              </a>
+              <a
+                href="https://www.instagram.com/aprosex"
+                className="text-white hover:text-rojo-persa transition-colors duration-300"
+              >
+                <Instagram size={24} />
+              </a>
+            </div>
+          </div>
+
+          {/* Copyright */}
+          <div className="text-center text-sm text-gray-400 border-t border-gray-600 pt-8 font-raleway-regular">
+            <p>&copy; 2025 Aprosex - Asociación de Profesionales del Sexo. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>

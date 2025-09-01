@@ -196,7 +196,7 @@ export default function ActualidadPage() {
               <div className="space-y-3 font-raleway-regular">
                 <div className="flex items-center space-x-3">
                   <Mail size={18} />
-                  <span>info@aprosex.org</span>
+                  <span>aprosex@aprosex.org</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin size={18} />
@@ -209,18 +209,9 @@ export default function ActualidadPage() {
             <div>
               <h3 className="text-xl font-raleway-bold text-rojo-persa mb-6">Newsletter</h3>
               <p className="mb-4 text-sm font-raleway-regular">
-                Mantente informade sobre nuestras actividades y recursos.
+                Coming soon...
               </p>
-              <form className="space-y-3">
-                <input
-                  type="email"
-                  placeholder="Tu email"
-                  className="w-full px-4 py-2 rounded-lg bg-beige text-cafe placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rojo-persa font-raleway-regular"
-                />
-                <button type="submit" className="w-full btn-primary px-4 py-2 rounded-lg font-raleway-semibold">
-                  Suscribirse
-                </button>
-              </form>
+              
             </div>
           </div>
 
