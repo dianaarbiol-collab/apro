@@ -224,11 +224,7 @@ export default function AprosexClientPage() {
                 APROSEX es casa de putas y solo les putas la construyen.
               </p>
               <p>
-                Así que, hermane pute, seas quien seas, vengas de donde vengas, te vemos, te queremos y te necesitamos.
-                Coge tus tacones y tu paraguas rojo y, como dice Georgina Orellana, "vayamos al barro". Te invitamos a
-                participar y a hacer más grande a APROSEX con tus saberes, tu arte y tu cultura puta. A que vengas a
-                compartir y a reírte con nosotras. Y a hacer ruido, mucho ruido. Que nos vean venir y se pongan a
-                temblar.
+                Así que, hermane pute, seas quien seas, vengas de donde vengas, te vemos, te queremos y te necesitamos. Coge tus tacones y tu paraguas rojo y, como dice Georgina Orellano, "vayamos al barro". Te invitamos a participar y a hacer más grande a APROSEX con tus saberes, tu arte y tu cultura puta. A que vengas a compartir y a reírte con nosotras. Y a hacer ruido, mucho ruido. Que nos vean venir y se pongan a temblar.
               </p>
             </div>
           </AnimatedSection>
@@ -390,8 +386,7 @@ export default function AprosexClientPage() {
                       Soy una artista mexicana, trabajadora sexual, madre soltera y migrante con más de una década de
                       militancia en los diversos activismos que me atraviesan. Empecé mi activismo por los derechos de
                       las trabajadoras sexuales en Aprosex hace más de 10 años, organización de la que ahora soy
-                      presidenta, y he sido la secretaria general en el sindicato de trabajadoras sexuales OTRAS, así
-                      como vicepresidenta en CATS (Comité de apoyo a las trabajadoras del sexo), de Murcia.
+                      presidenta.
                       <br />
                       <br />
                       También milito en la organización antirracista Madrecitas contra el desmembramiento de familias
